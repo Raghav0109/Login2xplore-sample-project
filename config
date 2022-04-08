@@ -1,0 +1,11 @@
+[core]
+	symlinks = false
+	repositoryformatversion = 0
+	filemode = false
+	logallrefupdates = true
+	bare = false
+[pack]
+	buildbitmaps = false
+[remote "origin"]
+	url = https://Raghav0109@github.com/Raghav0109/Login2xplore-sample-project.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
