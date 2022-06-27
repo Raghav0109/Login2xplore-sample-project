@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html lang="en">
     <head>
-        <title>Bootstrap Example</title>
+        <title>EMP Form Internship</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet"
@@ -18,12 +18,12 @@ and open the template in the editor.
     </head>
     <body>
         <div class="container">
-            <h2>Vertical (basic) form</h2>
+            <h2>Emp Form</h2>
             <form id="empForm" method="post">
                 <div class="form-group">
                     <span><label for="empId">Employee ID:</label> <label id="empIdMsg">
                         </label></span>
-                    <input type="text" class="form-control" name="empId" id="empId"
+                    <input type="text" class="form-control" onchange="getEmp()" name="empId" id="empId"
                            placeholder="Enter Employee ID" required>
                 </div>
                 <div class="form-group">
@@ -32,12 +32,35 @@ and open the template in the editor.
                            placeholder="Enter Employee Name" name="empName">
                 </div>
                 <div class="form-group">
-                    <label for="empEmail">Email:</label>
-                    <input type="email" class="form-control" id="empEmail"
-                           placeholder="Enter Employee Email" name="empEmail">
+                    <label for="empSalary">Salary:</label>
+                    <input type="text" class="form-control" id="Salary"
+                           placeholder="Enter Employee Salary" name="empSalary">
+                </div>
+                
+                <div class="form-group">
+                    <label for="empHra">Hra:</label>
+                    <input type="text" class="form-control" id="Hra"
+                           placeholder="Enter Employee Hra" name="Hra">
+                </div>
+                
+                <div class="form-group">
+                    <label for="empDa">Da:</label>
+                    <input type="text" class="form-control" id="Da"
+                           placeholder="Enter Employee da" name="empDa">
+                </div>
+                <div class="form-group">
+                    <label for="empDeduction">Deduction:</label>
+                    <input type="text" class="form-control" id="deduction"
+                           placeholder="Enter Employee Dedcution" name="empDeduction">
                 </div>
                 <input type="button" class="btn btn-primary" id="empSave" value="Save"
                        onclick="saveEmployee();">
+                
+                 <input type="button" class="btn btn-primary" id="empChange" value="Change"
+                       onclick="changeEmployee();">
+                 
+                  <input type="button" class="btn btn-primary" id="empReset" value="Reset"
+                       onclick="resetEmployee();">
             </form>
         </div>
         <script>
@@ -54,16 +77,40 @@ and open the template in the editor.
                     $("#empName").focus();
                     return "";
                 }
-                var empEmailVar = $("#empEmail").val();
-                if (empEmailVar === "") {
-                    alert("Employee Email is Required Value");
-                    $("#empEmail").focus();
+                var empSalaryVar = $("#empSalary").val();
+                if (empSalaryVar === "") {
+                    alert("Employee Salary is Required Value");
+                    $("#empSalary").focus();
+                    return "";
+                }
+                
+                var empHraVar = $("#empHra").val();
+                if (empHraVar === "") {
+                    alert("Employee Hra is Required Value");
+                    $("#empHra").focus();
+                    return "";
+                }
+                
+                var empDaVar = $("#empDa").val();
+                if (empDaVar === "") {
+                    alert("Employee Da is Required Value");
+                    $("#empDa").focus();
+                    return "";
+                }
+                
+                var empDeductionVar = $("#empDeduction").val();
+                if (empDeductionVar === "") {
+                    alert("Employee Deduction is Required Value");
+                    $("#empDeduction").focus();
                     return "";
                 }
                 var jsonStrObj = {
                     empId: empIdVar,
                     empName: empNameVar,
-                    empEmail: empEmailVar,
+                    empSalary: empSalaryVar,
+                    empHra: empHraVar,
+                    empDa: empDaVar,
+                    empDeduction: empDeductionVar
                 };
                 return JSON.stringify(jsonStrObj);
             }
@@ -101,7 +148,10 @@ and open the template in the editor.
             function resetForm() {
                 $("#empId").val("");
                 $("#empName").val("");
-                $("#empEmail").val("");
+                $("#empSalary").val("");
+                $("#empHra").val("");
+                $("#empDa").val("");
+                $("#empDeduction").val("");
                 $("#empId").focus();
             }
 
@@ -112,7 +162,7 @@ and open the template in the editor.
                 if (jsonStr === "") {
                     return;
                 }
-                var putReqStr = createPUTRequest("90938721|-31949285423927684|90946246",
+                var putReqStr = createPUTRequest("90938721|-31949290727779640|90940939",
                         jsonStr, "Employee", "Emp-rel");
                 alert(putReqStr);
                 jQuery.ajaxSetup({async: false});
@@ -125,5 +175,6 @@ and open the template in the editor.
 
             }
         </script>
+        <script type="text/javascript" src="https://login2explore.com/jpdb/resources/js/0.0.4/jpdb-commons.js"></script>
     </body>
 </html>
